@@ -36,7 +36,7 @@ before '/edit/*' do
 end
 
 get '/' do
-  @posts = Post.all
+  @posts = Post.order('id desc').all
   erb :index
 end
 
@@ -52,7 +52,7 @@ get '/search' do
 end
 
 get '/home' do
-  @posts = current_user.posts
+  @posts = current_user.posts.order('id desc')
   erb :home
 end
 
@@ -88,7 +88,7 @@ post '/sign_up' do
       password: params[:password],
       password_confirmation: params[:password_confirmation],
       icon_url: "")
-      
+
     if params[:file]
       image_upload(params[:file])
     end
