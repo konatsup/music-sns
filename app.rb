@@ -96,3 +96,19 @@ post '/search' do
 
   erb :search
 end
+
+post '/posts/new' do
+  comment = params[:comment]
+  if !comment.blank?
+    current_user.posts.create(
+      comment: params[:comment],
+      artist: params[:artist],
+      album: params[:album],
+      track: params[:track],
+      image_url: params[:image_url],
+      music_url: params[:music_url])
+    redirect '/home'
+  else
+    redirect '/search'
+  end
+end
