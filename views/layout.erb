@@ -12,6 +12,7 @@
     <% unless session[:user] %>
       <a href="/sign_up">新規登録</a>
     <% else %>
+      <a href="/home"><img src="<%= current_user.icon_url %>" alt="user_image" width="40" height="40"></a>
       <a href="/search">search</a>
       <a href="/sign_out">logout</a>
     <% end %>

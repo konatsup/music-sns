@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.require
 require 'sinatra/reloader' if development?
 require './models'
+require './image_uploader.rb'
 
 require 'open-uri'
 require 'net/http'
@@ -82,9 +83,17 @@ end
 post '/sign_up' do
   user = User.find_by(name: params[:name])
   unless user
-    @user = User.create(name: params[:name], password: params[:password], password_confirmation: params[:password_confirmation])
+    @user = User.create(
+      name: params[:name],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation],
+      icon_url: "")
+      
+    if params[:file]
+      image_upload(params[:file])
+    end
     if @user.persisted?
-    session[:user] = @user.id
+      session[:user] = @user.id
     end
   end
   redirect '/search'
