@@ -25,7 +25,7 @@ https://lfs5-kadai.herokuapp.com/
 | id              | integer  | ユーザ ID            |
 | name            | string   | ユーザ名             |
 | password_digest | string   | パスワード           |
-| image_url       | string   | ユーザアイコンの URL |
+| icon_url        | string   | ユーザアイコンの URL |
 | created_at      | datetime | 作成された時刻       |
 | updated_at      | datetime | 更新された時刻       |
 
@@ -58,12 +58,12 @@ belongs_to :user
 | get    | /home             | ユーザページを表示                        |
 | get    | /edit/:id         | Post 編集ページの表示                     |
 | get    | /signout          | ログアウト処理をし`/`へリダイレクトする   |
+| get    | /posts/:id/delete | Post の削除                               |
 | post   | /signin           | ログイン処理し`/search`へリダイレクトする |
 | post   | /sign_up          | 新規登録処理をする                        |
 | post   | /search           | 検索し結果を表示する                      |
 | post   | /posts/new        | Post の投稿                               |
 | post   | /posts/:id/update | Post の更新                               |
-| post   | /posts/:id/delete | Post の削除                               |
 
 ## View 設計
 
