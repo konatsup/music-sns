@@ -64,6 +64,12 @@ get '/sign_out' do
   redirect '/'
 end
 
+get '/posts/:id/delete' do
+  post = Post.find(params[:id])
+  post.destroy
+  redirect '/home'
+end
+
 post '/sign_in' do
   user = User.find_by(name: params[:name])
   if user && user.authenticate(params[:password])
