@@ -2,6 +2,10 @@
 
 author: こなつ
 
+## heroku にデプロイしたもの
+
+https://music-sns-konatsup.herokuapp.com/
+
 ## コピーするサイト
 
 https://lfs5-kadai.herokuapp.com/
