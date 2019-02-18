@@ -25,6 +25,11 @@ get '/edit/:id' do
   erb :edit
 end
 
+get '/sign_out' do
+  session[:user] = nil
+  redirect '/'
+end
+
 post '/sign_in' do
   user = User.find_by(name: params[:name])
   if user && user.authenticate(params[:password])
