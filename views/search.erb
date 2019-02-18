@@ -5,22 +5,28 @@
 		<input type="submit" value="検索">
 	</form>
 	<h2>検索結果</h2>
-		<div class="center-hrizontal">
-				<div class="post center-vertical">
-					<img src="https://is5-ssl.mzstatic.com/image/thumb/Music118/v4/94/b6/28/94b628ae-9603-1228-0447-01dd55295e9d/source/100x100bb.jpg">
-					<p>RADWIMPS</p>
-					<p>Your Name.</p>
-					<p>Zenzenzense - Movie Ver.</p>
-					<a href="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview118/v4/57/81/12/5781126a-3482-a065-b8c1-d85231dd1db7/mzaf_961505404051440966.plus.aac.p.m4a">サンプル</a>
-					<form action="/new" method="POST">
-						<input type="hidden" value="https://is5-ssl.mzstatic.com/image/thumb/Music118/v4/94/b6/28/94b628ae-9603-1228-0447-01dd55295e9d/source/100x100bb.jpg" name="imageUrl">
-						<input type="hidden" value="RADWIMPS"  name="artist">
-						<input type="hidden" value="Your Name." name="album">
-						<input type="hidden" value="Zenzenzense - Movie Ver." name="track">
-						<input type="hidden" value="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview118/v4/57/81/12/5781126a-3482-a065-b8c1-d85231dd1db7/mzaf_961505404051440966.plus.aac.p.m4a" name="sampleUrl">
-						<input type="text" name="comment" placeholder="コメント">
-						<input type="submit" value="投稿">
-					</form>
-				</div>
-		</div>
+  <% if !@musics.empty? %>
+    <div class="center-hrizontal">
+      <% @musics.each do |music| %>
+        <div class="post center-vertical">
+          <img src="<%= music["artworkUrl100"] %>">
+          <p><%= music["artistName"] %></p>
+          <p><%= music["collectionName"] %></p>
+          <p><%= music["trackName"] %></p>
+          <a href="<%= music["previewUrl"] %>">サンプル</a>
+          <form action="/posts/new" method="post">
+            <input type="hidden" value="<%= music["artworkUrl100"] %>" name="imageUrl">
+            <input type="hidden" value="<%= music["artistName"] %>"  name="artist">
+            <input type="hidden" value="<%= music["collectionName"] %>" name="album">
+            <input type="hidden" value="<%= music["trackName"] %>" name="track">
+            <input type="hidden" value="<%= music["previewUrl"] %>" name="musicUrl">
+            <input type="text" name="comment" placeholder="コメント">
+            <input type="submit" value="投稿">
+          </form>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    検索結果がありません
+  <% end %>
 </section>
