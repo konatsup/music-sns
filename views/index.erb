@@ -1,11 +1,13 @@
 <section class="first-view center-vertical">
   <h1>MUSIC SNS!!!</h1>
   <div>
-    <form action="/sign_in" method="post" class="form-inline">
+    <% unless session[:user] %>
+      <form action="/sign_in" method="post" class="form-inline">
       <input type="text" name="name" placeholder="ユーザー名" >
       <input type="password" name="password" placeholder="パスワード" >
       <input type="submit" value="ログイン" >
     </form>
+    <% end %>
   </div>
 </section>
 <section class="center-vertical">

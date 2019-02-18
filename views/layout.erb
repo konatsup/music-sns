@@ -9,7 +9,12 @@
 <body>
   <nav class="center-hrizontal">
 	  <a href="/">MUSIC SNS!!!</a>
-    <a href="/sign_up">新規登録</a>
+    <% unless session[:user] %>
+      <a href="/sign_up">新規登録</a>
+    <% else %>
+      <a href="/search">search</a>
+      <a href="/sign_out">logout</a>
+    <% end %>
   </nav>
   <main>
     <%= yield %>
