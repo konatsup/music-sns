@@ -56,6 +56,7 @@ get '/home' do
 end
 
 get '/edit/:id' do
+  @post = Post.find_by(id: params[:id])
   erb :edit
 end
 
@@ -118,5 +119,17 @@ post '/posts/new' do
     redirect '/home'
   else
     redirect '/search'
+  end
+end
+
+post '/posts/:id/update' do
+  post = Post.find(params[:id])
+  comment = params[:comment]
+  if !comment.blank?
+    post.comment = CGI.escapeHTML(comment)
+    post.save
+    redirect '/home'
+  else
+    redirect '/edit/#{post.id}'
   end
 end
