@@ -12,10 +12,12 @@
 </section>
 <section class="center-vertical">
   <h1>最新の投稿</h1>
-    <div class="post center-vertical">
-      <img src="https://is3-ssl.mzstatic.com/image/thumb/Music118/v4/2d/db/1f/2ddb1f05-c42d-7700-6cb2-415d03815808/source/100x100bb.jpg">
-      <p>artist:Relient K</p>
-      <p>コメント:さっすがあ</p>
-      <p>投稿者:locomoco</p>
+    <% @posts.each do |post| %>
+      <div class="post center-vertical">
+        <img src="<%= post.image_url %>">
+        <p>artist:<%= post.artist %></p>
+        <p>コメント:<%= post.comment %></p>
+        <p>投稿者:<%= post.user.name %></p>
       </div>
+    <% end %>
 </section>
