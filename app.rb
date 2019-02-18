@@ -52,7 +52,7 @@ get '/search' do
 end
 
 get '/home' do
-  @posts = Post.all
+  @posts = current_user.posts
   erb :home
 end
 
