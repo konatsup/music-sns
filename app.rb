@@ -103,7 +103,7 @@ post '/posts/new' do
   comment = params[:comment]
   if !comment.blank?
     current_user.posts.create(
-      comment: params[:comment],
+      comment: CGI.escapeHTML(params[:comment]),
       artist: params[:artist],
       album: params[:album],
       track: params[:track],

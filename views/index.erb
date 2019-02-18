@@ -16,7 +16,7 @@
       <div class="post center-vertical">
         <img src="<%= post.image_url %>">
         <p>artist:<%= post.artist %></p>
-        <p>コメント:<%= post.comment %></p>
+        <p>コメント:<%= CGI.escapeHTML(post.comment) %></p>
         <p>投稿者:<%= post.user.name %></p>
       </div>
     <% end %>

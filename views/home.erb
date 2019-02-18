@@ -7,7 +7,7 @@
         <p><%= post.album %></p>
         <p><%= post.track %></p>
         <p><a href="<%= post.music_url %>">サンプル</a></p>
-        <p>コメント：<%= post.comment %></p>
+        <p>コメント：<%= CGI.escapeHTML(post.comment) %></p>
         <a href="/posts/<%= post.id %>/delete">削除</a>
         <a href="/posts/<%= post.id %>/edit">編集</a>
       </div>
