@@ -5,6 +5,31 @@ require './models'
 
 enable :sessions
 
+helpers do
+  def current_user
+    User.find_by(id: session[:user])
+  end
+
+  def authorize
+    if current_user.nil?
+      redirect '/'
+    end
+  end
+
+end
+
+before '/search' do
+  authorize
+end
+
+before '/home' do
+  authorize
+end
+
+before '/edit/*' do
+  authorize
+end
+
 get '/' do
   erb :index
 end
